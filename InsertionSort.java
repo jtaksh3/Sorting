@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class SelectionSort {
+public class InsertionSort {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.print("Enter no. of elements to be Sorted :");
