@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class MergeSort {
+    void merge_sort(int[] arr, int p, int r) {
+        if(p < r) {
+            int q = (p + r) / 2;
+            merge_sort(arr, p, q);
+            merge_sort(arr,q+1, r);
+            merge(arr, p, q, r);
+        }
+    }
+     void merge(int[] arr, int p, int q, int r) {
+        int n1 = q - p + 1;
+        int n2 = r - q;
+        int[] L1 = new int[n1];
+        int[] L2 = new int[n2];
+        for(int i = 0; i < n1; i++)
+            L1[i] = arr[p + i - 1];
+        for(int j = 0; j < n2; j++)
+            L2[j] = arr[q+j];
+        L1[n1] = L2[n2] = 325665165;
+        int i = 0, j = 0;
+        for(int k = p; k <= r; k++) {
+            if(L1[i] <= L2[j]) {
+                arr[k] = L1[i];
+                i++;
+            }
+            else {
+                arr[k] = L2[j];
+                j++;
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Enter no. of elements to be sorted: ");
+        int n = scan.nextInt();
+        int[] arr = new int[n];
+        System.out.println("Enter "+n+" elements");
+        for(int i = 0; i < n; i++)
+            arr[i] = scan.nextInt();
+        int p = 0, r = n - 1;
+        MergeSort obj = new MergeSort();
+        obj.merge_sort(arr, p , r);
+        for(int i = 0; i < n; i++)
+            System.out.println(arr[i]);
+    }
+}
